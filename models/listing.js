@@ -1,6 +1,7 @@
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 const Review = require("./review"); 
+const user=require("./user");
 
 const listingSchema=new Schema({
        title:{
@@ -22,8 +23,12 @@ const listingSchema=new Schema({
         {
         type:Schema.Types.ObjectId,
         ref:"Review",
-       }]
-
+       },
+      ],
+      owner:{
+        type:Schema.Types.ObjectId,
+        ref:"User",
+      },
 });
 //Post SCHEMA MIDDLEWARE
 //if listing is deleted then all its review should delete
